@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>RealTalk ｜ 实战口语·油管情境精听工作台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --primary-bg: #eef2ff;
+      --accent: #0ea5e9;
+      --accent-warm: #f59e0b;
+      --accent-warm-bg: #fef3c7;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --bg-body: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --border: #e2e8f0;
+      --border-focus: #c7d2fe;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.12);
+      --shadow-glow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Header Nav */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-bg);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-focus);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-ghost {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: #e2e8f0;
+      color: var(--text-main);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border: 1px solid var(--primary-light);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    /* Video Selector Bar */
+    .video-selector-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+
+    .selector-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      padding-bottom: 4px;
+    }
+
+    .video-tab-card {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px;
+      background: var(--surface-subtle);
+      border: 1.5px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 280px;
+      max-width: 360px;
+    }
+
+    .video-tab-card:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .video-tab-card.active {
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.12);
+    }
+
+    .tab-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--primary-bg);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .video-tab-card.active .tab-badge {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .tab-info {
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .tab-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .tab-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tab-level {
+      font-weight: 600;
+      color: var(--accent-warm);
+    }
+
+    /* Main Grid Layout */
+    .app-main {
+      max-width: 1540px;
+      width: 100%;
+      margin: 18px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 53% 47%;
+      gap: 24px;
+      flex: 1;
+      align-items: start;
+    }
+
+    /* Left Player Column */
+    .player-pane {
+      position: sticky;
+      top: 86px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .player-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: #000;
+    }
+
+    .video-wrapper iframe, .video-wrapper #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Shadowing Overlay */
+    .shadowing-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      color: #fff;
+      padding: 24px;
+      text-align: center;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .shadowing-overlay.active {
+      display: flex;
+    }
+
+    .shadowing-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(239, 68, 68, 0.2);
+      border: 2px solid #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 14px;
+      animation: pulseRecord 1.5s infinite;
+    }
+
+    .shadowing-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .shadowing-sub {
+      font-size: 14px;
+      color: #cbd5e1;
+      max-width: 440px;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .shadowing-progress-bar {
+      width: 240px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .shadowing-progress-inner {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ef4444, #f59e0b);
+      border-radius: 999px;
+      transition: width 0.1s linear;
+    }
+
+    .shadowing-btn-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .shadowing-skip-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 6px 16px;
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    .shadowing-skip-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @keyframes pulseRecord {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Player Controls Underneath */
+    .player-controls-area {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: var(--surface);
+    }
+
+    .timeline-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .active-sentence-preview {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .main-btn-deck {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .ctrl-btn {
+      height: 44px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .ctrl-btn:hover {
+      background: var(--surface-subtle);
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+    }
+
+    .ctrl-btn.primary-play {
+      height: 48px;
+      padding: 0 24px;
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-light);
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+
+    .ctrl-btn.primary-play:hover {
+      background: #4338ca;
+    }
+
+    .ctrl-btn.replay-btn {
+      background: var(--accent-warm-bg);
+      border-color: #fde68a;
+      color: #b45309;
+    }
+
+    .ctrl-btn.replay-btn:hover {
+      background: #fef08a;
+    }
+
+    /* Training Modes Toggle Bar */
+    .training-modes-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .mode-pill-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .mode-pill-btn:hover {
+      border-color: #cbd5e1;
+      color: var(--text-main);
+    }
+
+    .mode-pill-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-light);
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    .mode-pill-btn.active.shadowing {
+      background: #ef4444;
+      border-color: #dc2626;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.25);
+    }
+
+    .mode-pill-btn.active.loop {
+      background: #f59e0b;
+      border-color: #d97706;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25);
+    }
+
+    /* Speed and Meta Toolbar */
+    .speed-and-settings {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .speed-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .speed-chip {
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .speed-chip.active {
+      background: var(--text-main);
+      color: #fff;
+      border-color: var(--text-main);
+    }
+
+    /* Video Info Card */
+    .video-detail-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .detail-category-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tag-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+    }
+
+    .tag-chip.primary {
+      background: var(--primary-bg);
+      color: var(--primary);
+    }
+
+    .video-main-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .video-speaker-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .video-summary-box {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      background: var(--surface-subtle);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Right Transcript Column */
+    .transcript-pane {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 120px);
+      position: sticky;
+      top: 86px;
+      overflow: hidden;
+    }
+
+    .transcript-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+    }
+
+    .transcript-header-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .count-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-bg);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .transcript-options {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    .toggle-label input {
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+
+    /* Sentence List */
+    .sentences-scroll-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+    }
+
+    .sentence-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .sentence-card:hover {
+      border-color: #cbd5e1;
+      background: #fafcff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sentence-card.active {
+      background: #f8faff;
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .sentence-card.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 4px;
+      background: var(--primary);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .card-index-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sentence-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      background: var(--surface-subtle);
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .sentence-card.active .sentence-num {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .sentence-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mini-action-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text-dim);
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .mini-action-btn:hover {
+      color: var(--primary);
+      background: var(--primary-bg);
+    }
+
+    .mini-action-btn.star.bookmarked {
+      color: #f59e0b;
+    }
+
+    .sentence-en {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.5;
+      margin-bottom: 6px;
+      letter-spacing: -0.2px;
+      transition: filter 0.2s ease;
+    }
+
+    /* Blind mode blur */
+    body.blind-mode .sentence-en {
+      filter: blur(7px);
+      user-select: none;
+    }
+
+    body.blind-mode .sentence-card:hover .sentence-en,
+    body.blind-mode .sentence-card.revealed .sentence-en {
+      filter: none;
+      user-select: text;
+    }
+
+    .sentence-zh {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    body.hide-zh .sentence-zh {
+      display: none;
+    }
+
+    /* Oral & Keyphrase Highlights */
+    .card-tags-area {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .oral-tip-badge {
+      font-size: 12px;
+      background: var(--primary-bg);
+      color: #3730a3;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .key-phrase-badge {
+      font-size: 12px;
+      background: var(--accent-warm-bg);
+      color: #92400e;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    /* Modals & Drawers */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      max-width: 620px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-dim);
+    }
+
+    .close-btn:hover {
+      color: var(--text-main);
+    }
+
+    .shortcut-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .shortcut-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kbd {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-bottom-width: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--primary);
+    }
+
+    /* Bookmark List inside Modal */
+    .bookmark-empty {
+      text-align: center;
+      padding: 36px 12px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    .bookmark-item {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      background: #fafcff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .app-main {
+        grid-template-columns: 1fr;
+      }
+      .player-pane {
+        position: static;
+      }
+      .transcript-pane {
+        height: 600px;
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Local file warning banner -->
+  <div id="fileProtocolBanner" style="display:none; background: #fff1f2; border-bottom: 2px solid #f43f5e; color: #9f1239; padding: 12px 24px; font-size: 14px; line-height: 1.6; text-align: center; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15); z-index: 999;">
+    <strong>⚠️ 为什么会显示“错误 153 视频播放器配置错误”？</strong><br>
+    这是因为 YouTube 官方安全策略<strong>严禁在本地（file:// 协议）直接双击打开</strong>调用播放器。<br>
+    👉 <strong>极简解决方法：</strong> 请在当前文件夹中双击运行【<strong style="color:#e11d48; text-decoration:underline;">启动RealTalk.bat</strong>】即可一键解除限制并正常播放！
+  </div>
+
+
+  <!-- Header Nav -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="brand">
+        <div class="brand-logo">R</div>
+        <div>
+          <span class="brand-title">RealTalk</span>
+          <span class="brand-tag">职场情境精听工作台</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn-ghost" onclick="openBookmarkModal()">
+          ⭐ 我的金句本 (<span id="bookmarkCount">0</span>)
+        </button>
+        <button class="btn-ghost" onclick="openShortcutModal()">
+          ⌨️ 快捷键
+        </button>
+        <button class="btn-primary" onclick="openCustomVideoModal()">
+          ＋ 导入自定义视频
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Video Selector Bar -->
+  <section class="video-selector-bar">
+    <div class="selector-container" id="videoSelectorContainer">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <main class="app-main">
+
+    <!-- Left Column: Player & Controls -->
+    <div class="player-pane">
+      <div class="player-card">
+        
+        <!-- Video Container -->
+        <div class="video-wrapper">
+          <div id="player"></div>
+
+          <!-- Shadowing Speaking Overlay -->
+          <div class="shadowing-overlay" id="shadowingOverlay">
+            <div class="shadowing-icon">🎙️</div>
+            <div class="shadowing-title">现在轮到你开口了！</div>
+            <div class="shadowing-sub" id="shadowingPromptText">请大声模仿原汁原味的声音、语调与连读...</div>
+            <div class="shadowing-progress-bar">
+              <div class="shadowing-progress-inner" id="shadowingProgressBar"></div>
+            </div>
+            <div class="shadowing-btn-row">
+              <button class="shadowing-skip-btn" onclick="skipShadowingPause()">立即继续 ▶</button>
+              <button class="shadowing-skip-btn" onclick="replayCurrentSentence()">再听一次 🔁</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Area -->
+        <div class="player-controls-area">
+          
+          <div class="timeline-meta-bar">
+            <div class="active-sentence-preview">
+              <span id="activeSentenceBadge">句 #01</span>
+              <span id="activeSentenceTime">00:00 - 00:00</span>
+            </div>
+            <div id="videoTimeDisplay">00:00 / 00:00</div>
+          </div>
+
+          <!-- Core Buttons -->
+          <div class="main-btn-deck">
+            <button class="ctrl-btn" onclick="prevSentence()" title="上一句 (快捷键: A 或 ←)">
+              ◀◀ 上一句
+            </button>
+            <button class="ctrl-btn primary-play" id="playPauseBtn" onclick="togglePlayPause()" title="播放/暂停 (快捷键: 空格)">
+              ▶ 播放
+            </button>
+            <button class="ctrl-btn" onclick="nextSentence()" title="下一句 (快捷键: D 或 →)">
+              下一句 ▶▶
+            </button>
+            <button class="ctrl-btn replay-btn" onclick="replayCurrentSentence()" title="重播本句 (快捷键: R)">
+              🔁 重听本句
+            </button>
+          </div>
+
+          <!-- Training Modes -->
+          <div class="training-modes-bar">
+            <button class="mode-pill-btn loop" id="loopModeBtn" onclick="toggleSingleLoop()" title="快捷键: L">
+              🔁 单句无限循环: <span id="loopStatusText">关</span>
+            </button>
+
+            <button class="mode-pill-btn shadowing" id="shadowingModeBtn" onclick="toggleShadowingMode()" title="快捷键: S">
+              🎙️ 影子跟读模式: <span id="shadowingStatusText">关</span>
+            </button>
+
+            <button class="mode-pill-btn" id="blindModeBtn" onclick="toggleBlindMode()" title="快捷键: B">
+              🙈 盲听遮挡: <span id="blindStatusText">关</span>
+            </button>
+
+            <button class="mode-pill-btn" id="toggleZhBtn" onclick="toggleChinese()">
+              文/A 中英对照
+            </button>
+          </div>
+
+          <!-- Speed & Settings -->
+          <div class="speed-and-settings">
+            <div class="speed-group">
+              <span>语速:</span>
+              <button class="speed-chip" onclick="setSpeed(0.75)">0.75x</button>
+              <button class="speed-chip" onclick="setSpeed(0.85)">0.85x</button>
+              <button class="speed-chip active" onclick="setSpeed(1.0)">1.0x</button>
+              <button class="speed-chip" onclick="setSpeed(1.25)">1.25x</button>
+            </div>
+            <div>快捷键：空格(暂停) · A/D(切句) · R(复读)</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Current Video Details -->
+      <div class="video-detail-card">
+        <div class="detail-category-row">
+          <span class="tag-chip primary" id="videoCategoryTag">分类</span>
+          <span class="tag-chip" id="videoLevelTag">难度等级</span>
+          <span class="tag-chip" id="videoDurationTag">时长</span>
+        </div>
+        <h2 class="video-main-title" id="videoDisplayTitle">视频标题加载中...</h2>
+        <div class="video-speaker-text" id="videoSpeakerText">讲者 / 场景</div>
+        <div class="video-summary-box" id="videoSummaryBox">学习导读加载中...</div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Sentence Transcript -->
+    <div class="transcript-pane">
+      <div class="transcript-header">
+        <div class="transcript-header-title">
+          <span>逐句精练与口语提炼</span>
+          <span class="count-badge" id="sentenceCountBadge">0 句</span>
+        </div>
+        <div class="transcript-options">
+          <label class="toggle-label" title="播放时自动将当前句滚到视野中央">
+            <input type="checkbox" id="autoScrollToggle" checked> 自动跟随
+          </label>
+        </div>
+      </div>
+
+      <!-- Scrollable Sentences -->
+      <div class="sentences-scroll-area" id="sentencesScrollArea">
+        <!-- Generated via JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Keyboard Shortcut Modal -->
+  <div class="modal-backdrop" id="shortcutModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">⌨️ 键盘快捷键指南</div>
+        <button class="close-btn" onclick="closeShortcutModal()">✕</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted);">
+        在电脑端练口语时，双手无需碰鼠标，使用快捷键可以极大提升跟读与盲听效率：
+      </p>
+      <table class="shortcut-table">
+        <tr><td><span class="kbd">Space</span> (空格)</td><td>播放 / 暂停视频</td></tr>
+        <tr><td><span class="kbd">A</span> 或 <span class="kbd">←</span></td><td>跳转到上一句</td></tr>
+        <tr><td><span class="kbd">D</span> 或 <span class="kbd">→</span></td><td>跳转到下一句</td></tr>
+        <tr><td><span class="kbd">R</span> 或 <span class="kbd">Enter</span></td><td>从头重听当前这句</td></tr>
+        <tr><td><span class="kbd">L</span></td><td>开启 / 关闭「单句无限循环」</td></tr>
+        <tr><td><span class="kbd">S</span></td><td>开启 / 关闭「影子跟读训练模式」</td></tr>
+        <tr><td><span class="kbd">B</span></td><td>开启 / 关闭「盲听遮挡（隐藏字幕）」</td></tr>
+        <tr><td><span class="kbd">1</span> / <span class="kbd">2</span> / <span class="kbd">3</span></td><td>快速切换 0.75x / 1.0x / 1.25x 语速</td></tr>
+      </table>
+      <div style="text-align: right; margin-top: 8px;">
+        <button class="btn-primary" onclick="closeShortcutModal()">我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookmarks Modal -->
+  <div class="modal-backdrop" id="bookmarkModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">⭐ 我的口语金句本</div>
+        <button class="close-btn" onclick="closeBookmarkModal()">✕</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted);">
+        这些是你标记收藏的高价值表达与客户沟通套路（保存在当前浏览器本地）：
+      </p>
+      <div id="bookmarkListContainer" style="max-height: 50vh; overflow-y: auto;">
+        <!-- Injected via JS -->
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+        <button class="btn-ghost" onclick="clearAllBookmarks()">清空金句本</button>
+        <button class="btn-primary" onclick="closeBookmarkModal()">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Video Modal -->
+  <div class="modal-backdrop" id="customVideoModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">＋ 导入自定义 YouTube 视频</div>
+        <button class="close-btn" onclick="closeCustomVideoModal()">✕</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted);">
+        你可以输入任何公开的 YouTube 视频链接或 11 位 Video ID：
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <label style="font-size: 12px; font-weight: 700;">YouTube 链接或 ID:</label>
+        <input type="text" id="customYoutubeInput" placeholder="例如：https://www.youtube.com/watch?v=... 或 11位ID" style="padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;">
+        
+        <label style="font-size: 12px; font-weight: 700;">视频自定义标题:</label>
+        <input type="text" id="customTitleInput" placeholder="例如：职场电话沟通情境实战" style="padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;">
+
+        <div style="font-size: 12px; color: var(--text-dim); background: var(--surface-subtle); padding: 8px 12px; border-radius: 6px;">
+          提示：导入后将立即嵌入该视频。如果视频自带字幕，系统将自动支持跳转播放。
+        </div>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px;">
+        <button class="btn-ghost" onclick="closeCustomVideoModal()">取消</button>
+        <button class="btn-primary" onclick="submitCustomVideo()">立即添加</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embed Preloaded Dataset -->
+  <script>
+    const INITIAL_VIDEOS = [{"id": "v1", "title": "如何进行高质量交谈：打破尴尬与倾听技巧", "englishTitle": "10 Ways to Have a Better Conversation", "speaker": "Celeste Headlee", "role": "资深电台访谈主持人 & 畅销书作家", "category": "沟通与破冰", "categoryKey": "communication", "level": "L2·日常进阶", "youtubeId": "R1vskiVDwl4", "duration": "2分30秒", "sentenceCount": 23, "summary": "针对日常寒暄与破冰，教你如何避免尬聊，如何在日常和工作中真正与对方建立信任连接。语言地道、发音纯正。", "tags": ["破冰技巧", "倾听艺术", "日常交谈", "消除偏见"], "sentences": [{"id": 1, "start": 12.83, "end": 14.8, "en": "All right, I want to see a show of hands:", "zh": "好的，我想先请大家举手示意一下：", "keyPhrase": "a show of hands", "oralTip": "开场与互动金句，会议破冰常用：'Let's have a show of hands.'"}, {"id": 2, "start": 14.83, "end": 23.26, "en": "how many of you have unfriended someone on Facebook because they said something offensive about politics or religion, childcare, food?", "zh": "你们当中有多少人，曾因为对方在政治、宗教、育儿或饮食上发表了冒犯言论，而在 Facebook 上拉黑过好友？", "keyPhrase": "unfriend someone / say something offensive", "oralTip": "注意 'because they said' 的轻微弱读，连贯说出不要顿卡。"}, {"id": 3, "start": 25.23, "end": 30.36, "en": "And how many of you know at least one person that you avoid because you just don't want to talk to them?", "zh": "又有多少人身边至少有一个你故意避开的人，只因你实在不想和他们搭话？", "keyPhrase": "at least one person that you avoid", "oralTip": "注意 'at least one' 的连读 /æt li:st wʌn/。"}, {"id": 4, "start": 32.96, "end": 39.4, "en": "You know, it used to be that in order to have a polite conversation, we just had to follow the advice of Henry Higgins in \"My Fair Lady\":", "zh": "要知道，过去要想维持一场得体的交谈，我们只需遵循《窈窕淑女》里亨利·希金斯的忠告：", "keyPhrase": "in order to have a polite conversation", "oralTip": "职场高频表达：'in order to...'（为了能够...）；'polite conversation'（得体的谈吐）。"}, {"id": 5, "start": 39.43, "end": 41.26, "en": "Stick to the weather and your health.", "zh": "“只聊聊天气和健康状况”。", "keyPhrase": "stick to...", "oralTip": "超实用短语动词：'stick to the topic'（紧扣主题）；'stick to the plan'（按计划执行）。"}, {"id": 6, "start": 41.26, "end": 47.3, "en": "But these days, with climate change and anti-vaxxing, those subjects are not safe either.", "zh": "但在今天，随着气候变化和各种争议话题出现，连这些话题也不再保险了。", "keyPhrase": "these days / not safe either", "oralTip": "口语转折套路：'these days, with... those subjects are not safe either.'"}, {"id": 7, "start": 47.33, "end": 55.3, "en": "So this world that we live in, this world in which every conversation has the potential to devolve into an argument,", "zh": "所以我们生活的这个世界，每一次交谈都有可能退化成一场争吵，", "keyPhrase": "has the potential to devolve into...", "oralTip": "书面与高级口语兼备：'have the potential to...'（极有可能...）；devolve into（蜕变成、退化为）。"}, {"id": 8, "start": 55.33, "end": 64.13, "en": "where our politicians can't speak to one another and where even the most trivial issues have someone fighting both passionately for it and against it, it's not normal.", "zh": "政客们彼此无法沟通，甚至最微不足道的事情都有人在激烈地争锋相对，这绝非正常现象。", "keyPhrase": "the most trivial issues / passionately for and against", "oralTip": "trivial issues（鸡毛蒜皮的小事）。注意 speak to one another 的节奏。"}, {"id": 9, "start": 64.66, "end": 71.3, "en": "Pew Research did a study of 10,000 American adults, and they found that at this moment, we are more polarized,", "zh": "皮尤研究中心对一万名美国成年人做了一项调研，发现此时此刻，我们的分歧比以往任何时候都要严重，", "keyPhrase": "did a study of / more polarized", "oralTip": "汇报数据常用：'We did a study / survey of... and found that...'"}, {"id": 10, "start": 71.3, "end": 75.3, "en": "we are more divided, than we ever have been in history.", "zh": "我们的分裂程度达到了历史最高点。", "keyPhrase": "more divided than we ever have been", "oralTip": "强调对比句型：'more [adj] than we ever have been in history.'"}, {"id": 11, "start": 75.6, "end": 80.36, "en": "We're less likely to compromise, which means we're not listening to each other.", "zh": "我们越来越不愿妥协，而这恰恰意味着我们不再互相倾听对方。", "keyPhrase": "less likely to compromise / not listening to each other", "oralTip": "商务谈判金句：'be less/more likely to compromise'（更不愿/更倾向于妥协）。"}, {"id": 12, "start": 80.4, "end": 85.3, "en": "And we make decisions about where to live, who to marry and even who our friends are going to be,", "zh": "我们在做各种决定时——住在哪里、和谁结婚、甚至和谁做朋友，", "keyPhrase": "make decisions about...", "oralTip": "基础高频表达：make a decision about / on sth（对某事做出决策）。"}, {"id": 13, "start": 85.33, "end": 88.33, "en": "based on what we already believe.", "zh": "全都是基于我们心中既有的成见。", "keyPhrase": "based on what we already believe", "oralTip": "陈述依据：'based on...'（基于...）。"}, {"id": 14, "start": 88.5, "end": 92.53, "en": "Again, that means we're not listening to each other.", "zh": "这再次表明，我们没有真正倾听彼此。", "keyPhrase": "Again, that means...", "oralTip": "会议总结推进：'Again, that means we need to focus on...'"}, {"id": 15, "start": 92.7, "end": 97.4, "en": "A conversation requires a balance between talking and listening, and somewhere along the way, we lost that balance.", "zh": "一场好的交谈，需要在说与听之间取得平衡；然而不知不觉中，我们失去了这种平衡。", "keyPhrase": "requires a balance between A and B", "oralTip": "客户沟通至理名言：'requires a balance between...'（需要平衡二者）。"}, {"id": 16, "start": 98.4, "end": 104.7, "en": "Part of that is due to technology. The smartphones that you all either have in your hands or close enough to grab really quickly.", "zh": "部分原因要归咎于科技。你们每个人要么手里正捏着智能手机，要么就放在触手可及的地方。", "keyPhrase": "part of that is due to / close enough to grab", "oralTip": "解释原因万能句：'Part of that is due to...'（部分原因是由于...）。"}, {"id": 17, "start": 105.0, "end": 111.76, "en": "According to Pew Research, about a third of American teenagers send more than a hundred texts a day.", "zh": "根据皮尤研究中心的数据，大约三分之一的美国青少年每天发送超过 100 条短信。", "keyPhrase": "according to... / about a third of...", "oralTip": "引用数据句型：'According to our data/feedback, about a third of clients...'"}, {"id": 18, "start": 112.13, "end": 118.06, "en": "And many of them, almost most of them, are more likely to text with their friends than they are to talk to them in person.", "zh": "他们当中绝大多数人，宁愿和朋友发文字消息，也不愿当面开口交流。", "keyPhrase": "more likely to ... than ... in person", "oralTip": "in person（当面、亲自）：'Can we meet in person?'（我们能当面聊聊吗？）"}, {"id": 19, "start": 118.4, "end": 125.1, "en": "There's this great piece in The Atlantic. It was written by a high school teacher named Paul Barnwell.", "zh": "《大西洋月刊》有一篇精彩文章，是一位名叫保罗·巴恩韦尔的高中老师写的。", "keyPhrase": "there's this great piece in...", "oralTip": "引述推荐材料：'There's this great article / report in...'"}, {"id": 20, "start": 125.13, "end": 133.0, "en": "And he gave his kids a communication project. He wanted to teach them how to speak on a specific subject without using notes.", "zh": "他给学生布置了一个沟通项目，旨在教他们如何在脱稿的情况下就特定主题发表演讲。", "keyPhrase": "on a specific subject / without using notes", "oralTip": "without using notes（不看稿子、脱稿）。"}, {"id": 21, "start": 133.03, "end": 138.86, "en": "And he said this: \"I came to realize that conversational competence might be the single most overlooked skill we fail to teach.\"", "zh": "他说：“我逐渐意识到，交际沟通能力也许是我们忽略未教的最重要的一项技能。”", "keyPhrase": "conversational competence / the single most overlooked skill", "oralTip": "conversational competence（沟通交际能力）；overlooked skill（被忽视的技能）。"}, {"id": 22, "start": 139.13, "end": 145.5, "en": "Kids spend hours each day engaging with ideas and each other through screens, but rarely do they have an opportunity to hone their interpersonal communication skills.", "zh": "孩子们每天花数小时隔着屏幕与思想和彼此打交道，却极少有机会去打磨自己的人际交往技能。", "keyPhrase": "engage with / hone one's interpersonal skills", "oralTip": "hone（精进、磨练）：'hone communication skills'（打磨沟通技巧）。"}, {"id": 23, "start": 145.86, "end": 150.9, "en": "It might sound like a funny question, but we have to ask ourselves: Is there any 21st-century skill more important than being able to sustain coherent, confident conversation?", "zh": "这听起来或许有些不可思议，但我们不得不自问：在21世纪，还有什么技能比能够保持连贯、自信的交谈更重要的呢？", "keyPhrase": "sustain coherent, confident conversation", "oralTip": "高阶表达：sustain a conversation（把一段对话持续聊下去）；coherent（连贯有条理的）。"}]}, {"id": "v2", "title": "开口就吸引人：职场沟通与说服力表达", "englishTitle": "How to Speak So That People Want to Listen", "speaker": "Julian Treasure", "role": "国际声音与声学沟通大师", "category": "说服与演讲", "categoryKey": "pitching", "level": "L2·职场进阶", "youtubeId": "eIho2S0ZahI", "duration": "2分20秒", "sentenceCount": 17, "summary": "分析阻碍他人倾听你的常见说话恶习（抱怨、说长道短、找借口），并示范如何让自己的职场发声沉稳、有力、极具信服力。", "tags": ["商务演讲", "职场说服", "语调节奏", "改掉恶习"], "sentences": [{"id": 1, "start": 13.96, "end": 17.63, "en": "The human voice: It's the instrument we all play.", "zh": "人类的声音：它是我们每个人都在演奏的乐器。", "keyPhrase": "the instrument we all play", "oralTip": "比喻修辞，演讲开场黄金句。注意 instrument 后的轻停顿。"}, {"id": 2, "start": 18.61, "end": 26.53, "en": "It's the most powerful sound in the world, probably. It's the only one that can start a war or say \"I love you.\"", "zh": "它或许是世界上最强大的声音。它是唯一既能引发战争，又能轻诉“我爱你”的声音。", "keyPhrase": "the most powerful sound / start a war", "oralTip": "contrast（对比手法）：'the only one that can... or...'"}, {"id": 3, "start": 26.56, "end": 35.8, "en": "And yet many people have the experience that when they speak, people don't listen to them. And why is that? How can we speak powerfully to make change in the world?", "zh": "然而许多人都有过这样的经历——当他们开口说话时，别人却心不在焉。为什么会这样？我们如何才能有力表达，去影响和改变世界？", "keyPhrase": "speak powerfully to make change", "oralTip": "客户沟通核心追求：speak powerfully（有力地陈述）；make change（促成改变）。"}, {"id": 4, "start": 36.63, "end": 44.53, "en": "What I'd like to suggest, there are a number of habits that we need to move away from. I've assembled for your pleasure here seven deadly sins of speaking.", "zh": "我想提出的是，我们身上有很多坏习惯需要摒弃。我在这里为大家总结了开口说话的“七宗罪”。", "keyPhrase": "what I'd like to suggest / move away from", "oralTip": "商务建议委婉开场句：'What I'd like to suggest is that...'"}, {"id": 5, "start": 44.8, "end": 48.0, "en": "I'm not pretending this is an exhaustive list, but these seven, I think, are pretty large habits that we can all fall into.", "zh": "我不敢说这份清单面面俱到，但我认为这七个是大家非常容易陷入的大毛病。", "keyPhrase": "an exhaustive list / fall into", "oralTip": "谦逊得体的措辞：'I'm not pretending this is exhaustive, but...'"}, {"id": 6, "start": 48.86, "end": 57.06, "en": "First, gossip. Speaking ill of somebody who's not present. Not a nice habit, and we know perfectly well the person gossiping, five minutes later, will be gossiping about us.", "zh": "第一条，八卦闲话。在背后说不在场之人的坏话。这不是个好习惯，而且我们心里很清楚，嚼舌根的人五分钟后就会在背后议论我们。", "keyPhrase": "speaking ill of somebody / not a nice habit", "oralTip": "speak ill of someone（背后说某人坏话）；gossip about us（八卦议论我们）。"}, {"id": 7, "start": 57.86, "end": 64.6, "en": "Second, judging. We know people who are like this in conversation, and it's very hard to listen to somebody if you know you're being judged and found wanting at the same time.", "zh": "第二条，妄加评判。我们在交谈中都见过这种人，如果你知道对方一边听一边在挑你刺、评头品足，你根本很难听进去他们说的话。", "keyPhrase": "judging / found wanting", "oralTip": "found wanting（被认为不合要求、被挑剔）。"}, {"id": 8, "start": 65.5, "end": 74.0, "en": "Third, negativity. You can fall into this. My mother, in the last years of her life, became very negative, and it's hard to listen. I remember one day, I said to her, \"It's the 15th of April today,\"", "zh": "第三条，负面消极。人很容易陷进去。我母亲晚年变得极其消极，让人很难沟通。我记得有一天我对她说：“今天是 4 月 15 号呢，”", "keyPhrase": "fall into negativity / hard to listen", "oralTip": "职场沟通大忌：negativity（总是抱怨消极）。"}, {"id": 9, "start": 74.03, "end": 80.86, "en": "and she said, \"I know, isn't it dreadful?\" It's hard to listen when somebody is that negative.", "zh": "她却说：“我知道，真是糟糕透顶不是吗？”当一个人满腹牢骚时，别人是极难听下去的。", "keyPhrase": "isn't it dreadful?", "oralTip": "dreadful（糟糕透顶的，英音高频口头词）。"}, {"id": 10, "start": 81.7, "end": 90.53, "en": "And another form of negativity, complaining. Well, this is the national art of the UK. We complain about the weather, sport, about politics, about everything,", "zh": "而消极情绪的另一种表现形式就是抱怨。这堪称英国的一门“全民艺术”。我们抱怨天气、体育、政治，抱怨身边的一切，", "keyPhrase": "complaining / national art", "oralTip": "幽默自嘲技巧：'this is the national art of...'"}, {"id": 11, "start": 90.56, "end": 95.7, "en": "but actually, complaining is viral misery. It's not spreading sunshine and lightness in the world.", "zh": "但实际上，抱怨犹如病毒般蔓延的痛苦，它绝不能给世界带来阳光与轻松。", "keyPhrase": "viral misery / spreading sunshine", "oralTip": "viral misery（像病毒一样传染的痛苦抑郁情绪）。"}, {"id": 12, "start": 96.5, "end": 105.73, "en": "Next, excuses. We've all met this guy. Maybe we've been this guy. Some people have a blamethrower. They just pass it to everybody else and don't take responsibility for their actions,", "zh": "下一个毛病，找借口。我们都遇到过这种人，也许我们自己也做过这种人。有的人手里就像握着一把“甩锅枪”，遇事全推给别人，从不为自己的行为担责，", "keyPhrase": "a blamethrower / take responsibility for", "oralTip": "绝妙幽默生词：blamethrower（甩锅侠，对应火焰喷射器 flamethrower）；take responsibility for（担责）。"}, {"id": 13, "start": 105.76, "end": 109.8, "en": "and again, hard to listen to somebody who is being like that.", "zh": "再次说明，面对这样的人，人们是听不进去的。", "keyPhrase": "hard to listen to somebody", "oralTip": "重复强调核心论点。"}, {"id": 14, "start": 110.86, "end": 119.53, "en": "Penultimate, the sixth of the seven, embroidery, exaggeration. It demeans our language, actually, sometimes. For example, if I see something that really is awesome, what do I call it?", "zh": "倒数第二条，第七个中的第六个：添枝加叶、言过其实。这其实常常在贬低我们语言的力量。比如，如果我真见到了极其震撼的东西，我该怎么形容它？", "keyPhrase": "embroidery, exaggeration / demeans our language", "oralTip": "penultimate（倒数第二）；exaggeration（夸大其词）；demean（贬低贬损）。"}, {"id": 15, "start": 119.93, "end": 125.8, "en": "And then, of course, this exaggeration becomes lying, and we know that lying is a deadly sin in communication.", "zh": "而且这种夸大随之就会演变为谎言，而我们都知道说谎是沟通中的大忌。", "keyPhrase": "a deadly sin in communication", "oralTip": "deadly sin（致命弱点、大忌）。"}, {"id": 16, "start": 126.7, "end": 135.2, "en": "And finally, dogmatism. The confusion of facts with opinions. When those two things get run together, you're listening into the wind.", "zh": "最后一条，武断教条。将事实与个人观点混为一谈。当这两者纠缠在一起时，你说的话在别人听来就如耳旁风。", "keyPhrase": "dogmatism / confusion of facts with opinions", "oralTip": "职场汇报铁律：区分事实与观点（facts vs. opinions）。"}, {"id": 17, "start": 135.23, "end": 143.6, "en": "You know, somebody is bombarding you with their opinions as if they were true. It's difficult to listen to that.", "zh": "对方用自以为千真万确的个人主观意见对你狂轰滥炸，换谁都难以接受。", "keyPhrase": "bombarding you with their opinions", "oralTip": "bombard someone with...（用...轰炸某人）。"}]}, {"id": "v3", "title": "成功谈判者的秘密：得体提出诉求与化解异议", "englishTitle": "What Successful Negotiators Do Differently", "speaker": "Kathryn Valentine", "role": "哈佛商业评论撰稿人 & 谈判顾问", "category": "客户与谈判", "categoryKey": "negotiation", "level": "L3·客户商务", "youtubeId": "kryWR7QNBkc", "duration": "1分40秒", "sentenceCount": 12, "summary": "向客户或合作伙伴提出商业要求时，如何化解抵触心理？学习把“你死我活”的争辩转变为“双赢协作”的顶级沟通心智。", "tags": ["商业谈判", "客户沟通", "双赢思维", "得体陈述"], "sentences": [{"id": 1, "start": 4.3, "end": 9.81, "en": "I love negotiating. Anyone else?", "zh": "我热爱谈判。还有谁跟我一样吗？", "keyPhrase": "anyone else?", "oralTip": "最自然简短的演讲互动提问：'Anyone else?'（还有别人吗？）"}, {"id": 2, "start": 10.41, "end": 16.5, "en": "Negotiating gets a bad rap. We think of it as greedy, combative, aggressive, manipulative.", "zh": "“谈判”这个词名声向来不太好。我们总觉得它意味着贪婪、好斗、咄咄逼人和玩弄手腕。", "keyPhrase": "gets a bad rap / combative / aggressive", "oralTip": "地道成语：'get a bad rap'（背负恶名、受委屈被误解）；combative（好斗的）。"}, {"id": 3, "start": 16.53, "end": 20.3, "en": "And when I say the word \"negotiation,\" what comes to mind?", "zh": "当我提到“谈判”这个词时，你脑海里会浮现出什么？", "keyPhrase": "what comes to mind?", "oralTip": "引导对方思考金句：'When we talk about this, what comes to your mind?'"}, {"id": 4, "start": 20.33, "end": 28.33, "en": "Most people think of money. And when you think about asking for money, fear, stress and awkwardness.", "zh": "大多数人首先想到的是钱。而一旦想到要向人开口要钱，伴随而来的往往是恐惧、压力和尴尬。", "keyPhrase": "fear, stress and awkwardness", "oralTip": "asking for money（谈钱/要预算）；awkwardness（尴尬拘谨）。"}, {"id": 5, "start": 29.5, "end": 35.3, "en": "Because we’ve been taught to look at negotiation through an old model: win-lose, me versus you.", "zh": "因为我们从小被灌输的谈判旧模式是：非赢即输、你死我活的零和博弈。", "keyPhrase": "win-lose / me versus you", "oralTip": "商业概念：'win-lose'（零和对立）；'win-win'（双赢共赢）。"}, {"id": 6, "start": 35.33, "end": 41.5, "en": "And women are especially uncomfortable in that dynamic because our culture penalizes women who ask for more.", "zh": "女性在这种模式下尤为不自在，因为社会文化往往会对敢于主动争取更多利益的女性施加苛责。", "keyPhrase": "uncomfortable in that dynamic / penalizes", "oralTip": "penalize（处分、惩罚、苛求）。"}, {"id": 7, "start": 41.8, "end": 50.3, "en": "Studies show that women are less likely to initiate negotiations, and when they do, they face a social backlash that men simply don't.", "zh": "多项研究表明，女性主动发起谈判的可能性更低，而即使发起了，她们往往要面临男性根本不会遭遇的舆论反弹。", "keyPhrase": "initiate negotiations / social backlash", "oralTip": "客户沟通关键动词：'initiate negotiations'（发起协商谈判）；backlash（强烈反弹）。"}, {"id": 8, "start": 50.8, "end": 56.6, "en": "So how do we change that? How do the most successful negotiators walk into a room and get what they want?", "zh": "那么我们该如何扭转这一局面？顶尖的成功谈判者究竟是如何走进会议室，并拿到自己想要的结果的？", "keyPhrase": "walk into a room / get what they want", "oralTip": "自信有力的表达：'walk into the room and get what we want.'"}, {"id": 9, "start": 56.8, "end": 64.3, "en": "They don't view negotiation as a battle. They view it as a collaborative problem-solving conversation.", "zh": "他们从不把谈判当作一场战役。相反，他们把它看作一次协同解决问题的深入对话。", "keyPhrase": "collaborative problem-solving conversation", "oralTip": "客户沟通天花板定义：'collaborative problem-solving'（协作式共同解决问题）。"}, {"id": 10, "start": 64.5, "end": 71.0, "en": "Instead of saying, \"Here is what I need from you,\" they ask, \"How can we solve this problem together so that both of us win?\"", "zh": "他们绝不会直接说“这是我需要你做的事”，而是问：“我们如何携手解决这个问题，从而达成双方共赢？”", "keyPhrase": "Instead of saying... they ask...", "oralTip": "神仙客户沟通句式：'How can we solve this together so that both of us win?'"}, {"id": 11, "start": 71.5, "end": 78.4, "en": "This small shift in language changes everything. It turns confrontation into partnership.", "zh": "这个在措辞上的细微转变改变了一切。它瞬间把剑拔弩张的对抗化作了齐心协力的伙伴关系。", "keyPhrase": "turns confrontation into partnership", "oralTip": "confrontation into partnership（化对抗为协作伙伴）。"}, {"id": 12, "start": 78.7, "end": 86.8, "en": "When you align your ask with the other party's goals, resistance melts away. You're no longer demanding; you're helping.", "zh": "当你把自己的诉求与对方的目标绑定在一起时，对方的抵触心理便烟消云散了。你不再是在提要求，而是在提供帮助。", "keyPhrase": "align your ask with... / resistance melts away", "oralTip": "商务精髓：align your ask with their goals（将你的诉求与对方利益对齐）。"}]}];
+  </script>
+
+  <!-- Main Application Logic -->
+  <script>
+    // State management
+    let videos = [];
+    let currentVideoIndex = 0;
+    let currentSentenceIndex = 0;
+    let isSingleLoop = false;
+    let isShadowing = false;
+    let isBlindMode = false;
+    let isHideZh = false;
+    let autoScroll = true;
+    let currentPlaybackRate = 1.0;
+    let player = null;
+    let isPlayerReady = false;
+    let trackingInterval = null;
+    let shadowingTimer = null;
+    let bookmarks = [];
+
+    // Load Local Storage
+    function loadSavedState() {
+      const savedCustom = localStorage.getItem('realtalk_custom_videos');
+      if (savedCustom) {
+        try {
+          const parsed = JSON.parse(savedCustom);
+          videos = [...INITIAL_VIDEOS, ...parsed];
+        } catch(e) {
+          videos = [...INITIAL_VIDEOS];
+        }
+      } else {
+        videos = [...INITIAL_VIDEOS];
+      }
+
+      const savedBookmarks = localStorage.getItem('realtalk_bookmarks');
+      if (savedBookmarks) {
+        try {
+          bookmarks = JSON.parse(savedBookmarks);
+        } catch(e) {
+          bookmarks = [];
+        }
+      }
+      updateBookmarkBadge();
+    }
+
+    function saveBookmarks() {
+      localStorage.setItem('realtalk_bookmarks', JSON.stringify(bookmarks));
+      updateBookmarkBadge();
+    }
+
+    function updateBookmarkBadge() {
+      document.getElementById('bookmarkCount').innerText = bookmarks.length;
+    }
+
+    // Render Video Selector Tabs
+    function renderVideoTabs() {
+      const container = document.getElementById('videoSelectorContainer');
+      container.innerHTML = '';
+
+      videos.forEach((vid, idx) => {
+        const card = document.createElement('div');
+        card.className = `video-tab-card ${idx === currentVideoIndex ? 'active' : ''}`;
+        card.onclick = () => switchVideo(idx);
+
+        let icon = '🎬';
+        if (vid.categoryKey === 'communication') icon = '🤝';
+        else if (vid.categoryKey === 'pitching') icon = '💡';
+        else if (vid.categoryKey === 'negotiation') icon = '💼';
+
+        card.innerHTML = `
+          <div class="tab-badge">${icon}</div>
+          <div class="tab-info">
+            <div class="tab-title" title="${vid.title}">${vid.title}</div>
+            <div class="tab-meta">
+              <span class="tab-level">${vid.level || '精听'}</span>
+              <span>·</span>
+              <span>${vid.duration || ''}</span>
+              <span>·</span>
+              <span>${vid.sentences ? vid.sentences.length : 0} 句</span>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Switch Current Video
+    function switchVideo(idx) {
+      if (idx < 0 || idx >= videos.length) return;
+      currentVideoIndex = idx;
+      currentSentenceIndex = 0;
+      clearShadowingState();
+
+      renderVideoTabs();
+      updateVideoDetails();
+      renderSentences();
+
+      const vid = videos[currentVideoIndex];
+      if (player && isPlayerReady && vid.youtubeId) {
+        player.loadVideoById(vid.youtubeId, vid.sentences && vid.sentences[0] ? vid.sentences[0].start : 0);
+        player.setPlaybackRate(currentPlaybackRate);
+      }
+    }
+
+    // Update Video Metadata View
+    function updateVideoDetails() {
+      const vid = videos[currentVideoIndex];
+      document.getElementById('videoCategoryTag').innerText = vid.category || '职场沟通';
+      document.getElementById('videoLevelTag').innerText = vid.level || '实战精听';
+      document.getElementById('videoDurationTag').innerText = vid.duration || '';
+      document.getElementById('videoDisplayTitle').innerText = vid.title;
+      document.getElementById('videoSpeakerText').innerText = `${vid.speaker || ''} · ${vid.role || ''}`;
+      document.getElementById('videoSummaryBox').innerText = vid.summary || '';
+      document.getElementById('sentenceCountBadge').innerText = `${vid.sentences ? vid.sentences.length : 0} 句`;
+    }
+
+    // Render Sentences in Scroll Area
+    function renderSentences() {
+      const container = document.getElementById('sentencesScrollArea');
+      container.innerHTML = '';
+      const vid = videos[currentVideoIndex];
+
+      if (!vid.sentences || vid.sentences.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-dim);">该视频暂无结构化句表，可直接观看。</div>';
+        return;
+      }
+
+      vid.sentences.forEach((s, idx) => {
+        const card = document.createElement('div');
+        card.className = `sentence-card ${idx === currentSentenceIndex ? 'active' : ''}`;
+        card.id = `sent-card-${idx}`;
+        card.onclick = (e) => {
+          // prevent jumping if clicked on star
+          if (e.target.closest('.star')) return;
+          jumpToSentence(idx);
+        };
+
+        const isBookmarked = bookmarks.some(b => b.vidId === vid.id && b.sentId === s.id);
+
+        card.innerHTML = `
+          <div class="card-top-row">
+            <div class="card-index-group">
+              <span class="sentence-num">#${String(idx + 1).padStart(2, '0')}</span>
+              <span class="sentence-time">${formatTime(s.start)} - ${formatTime(s.end)}</span>
+            </div>
+            <div class="card-actions">
+              <button class="mini-action-btn" title="循环本句" onclick="event.stopPropagation(); setAndLoopSentence(${idx})">🔁</button>
+              <button class="mini-action-btn star ${isBookmarked ? 'bookmarked' : ''}" title="收藏金句" onclick="toggleBookmark(${idx}, this)">${isBookmarked ? '★' : '☆'}</button>
+            </div>
+          </div>
+          <div class="sentence-en">${s.en}</div>
+          <div class="sentence-zh">${s.zh || ''}</div>
+          ${ s.keyPhrase || s.oralTip ? `
+            <div class="card-tags-area">
+              ${s.keyPhrase ? `<div class="key-phrase-badge">💡 核心表达: ${s.keyPhrase}</div>` : ''}
+              ${s.oralTip ? `<div class="oral-tip-badge">🗣️ 口语实战: ${s.oralTip}</div>` : ''}
+            </div>
+          ` : ''}
+        `;
+
+        container.appendChild(card);
+      });
+
+      updateActiveSentenceDisplay();
+    }
+
+    // Time Formatter
+    function formatTime(sec) {
+      if (isNaN(sec)) return "00:00";
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    // Highlight and Scroll to Active Sentence
+    function updateActiveSentenceDisplay() {
+      const vid = videos[currentVideoIndex];
+      if (!vid.sentences || !vid.sentences[currentSentenceIndex]) return;
+
+      const s = vid.sentences[currentSentenceIndex];
+      document.getElementById('activeSentenceBadge').innerText = `句 #${String(currentSentenceIndex + 1).padStart(2, '0')}`;
+      document.getElementById('activeSentenceTime').innerText = `${formatTime(s.start)} - ${formatTime(s.end)}`;
+
+      // Update card active classes
+      const allCards = document.querySelectorAll('.sentence-card');
+      allCards.forEach((c, i) => {
+        if (i === currentSentenceIndex) {
+          c.classList.add('active');
+          if (autoScroll) {
+            c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          c.classList.remove('active');
+        }
+      });
+    }
+
+    // YouTube Player API Hook
+    function onYouTubeIframeAPIReady() {
+      const firstVid = videos[currentVideoIndex];
+      player = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: firstVid.youtubeId,
+        playerVars: {
+          'playsinline': 1,
+          'rel': 0,
+          'modestbranding': 1,
+          'enablejsapi': 1,
+          origin: window.location.protocol.startsWith('http') ? window.location.origin : undefined
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      isPlayerReady = true;
+      startTrackingInterval();
+      console.log("YouTube Player is ready.");
+    }
+
+    function onPlayerStateChange(event) {
+      const btn = document.getElementById('playPauseBtn');
+      if (event.data === YT.PlayerState.PLAYING) {
+        btn.innerHTML = "⏸ 暂停";
+      } else {
+        btn.innerHTML = "▶ 播放";
+      }
+    }
+
+    // Real-time loop to track playback position and sync sentences
+    function startTrackingInterval() {
+      if (trackingInterval) clearInterval(trackingInterval);
+      trackingInterval = setInterval(() => {
+        if (!player || !isPlayerReady || typeof player.getCurrentTime !== 'function') return;
+
+        const currentTime = player.getCurrentTime();
+        const duration = player.getDuration();
+        document.getElementById('videoTimeDisplay').innerText = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+
+        const vid = videos[currentVideoIndex];
+        if (!vid.sentences || vid.sentences.length === 0) return;
+
+        const currentS = vid.sentences[currentSentenceIndex];
+
+        // Check if sentence ended
+        if (currentS && currentTime >= currentS.end) {
+          if (isSingleLoop) {
+            // Single sentence loop
+            player.seekTo(currentS.start, true);
+            return;
+          } else if (isShadowing) {
+            // Shadowing mode: pause and prompt user to shadow
+            triggerShadowingPause(currentS);
+            return;
+          }
+        }
+
+        // If not in special loop/pause, find the active sentence based on current time
+        const foundIdx = vid.sentences.findIndex(s => currentTime >= s.start && currentTime < s.end);
+        if (foundIdx !== -1 && foundIdx !== currentSentenceIndex) {
+          currentSentenceIndex = foundIdx;
+          updateActiveSentenceDisplay();
+        }
+      }, 80);
+    }
+
+    // Jump directly to sentence
+    function jumpToSentence(idx) {
+      const vid = videos[currentVideoIndex];
+      if (!vid.sentences || !vid.sentences[idx]) return;
+      currentSentenceIndex = idx;
+      clearShadowingState();
+
+      updateActiveSentenceDisplay();
+      if (player && isPlayerReady) {
+        player.seekTo(vid.sentences[idx].start, true);
+        player.playVideo();
+      }
+    }
+
+    function setAndLoopSentence(idx) {
+      isSingleLoop = true;
+      updateLoopUI();
+      jumpToSentence(idx);
+    }
+
+    // Shadowing Mode Logic
+    function triggerShadowingPause(s) {
+      if (!player || !isPlayerReady) return;
+      player.pauseVideo();
+
+      const overlay = document.getElementById('shadowingOverlay');
+      const progressInner = document.getElementById('shadowingProgressBar');
+      const promptText = document.getElementById('shadowingPromptText');
+      overlay.classList.add('active');
+      promptText.innerText = `跟读原句：“${s.en}”`;
+
+      // Pause duration: sentence duration * 1.1 (minimum 2.5s, max 6s)
+      const pauseDuration = Math.min(Math.max((s.end - s.start) * 1100, 2500), 6000);
+      const startTime = Date.now();
+
+      progressInner.style.width = '0%';
+
+      if (shadowingTimer) clearInterval(shadowingTimer);
+      shadowingTimer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min((elapsed / pauseDuration) * 100, 100);
+        progressInner.style.width = `${pct}%`;
+
+        if (elapsed >= pauseDuration) {
+          clearInterval(shadowingTimer);
+          overlay.classList.remove('active');
+          // advance to next sentence
+          nextSentence();
+        }
+      }, 50);
+    }
+
+    function skipShadowingPause() {
+      clearShadowingState();
+      nextSentence();
+    }
+
+    function clearShadowingState() {
+      if (shadowingTimer) clearInterval(shadowingTimer);
+      const overlay = document.getElementById('shadowingOverlay');
+      if (overlay) overlay.classList.remove('active');
+    }
+
+    // Playback Controls
+    function togglePlayPause() {
+      if (!player || !isPlayerReady) return;
+      const state = player.getPlayerState();
+      if (state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+      } else {
+        clearShadowingState();
+        player.playVideo();
+      }
+    }
+
+    function prevSentence() {
+      if (currentSentenceIndex > 0) {
+        jumpToSentence(currentSentenceIndex - 1);
+      }
+    }
+
+    function nextSentence() {
+      const vid = videos[currentVideoIndex];
+      if (vid.sentences && currentSentenceIndex < vid.sentences.length - 1) {
+        jumpToSentence(currentSentenceIndex + 1);
+      }
+    }
+
+    function replayCurrentSentence() {
+      clearShadowingState();
+      jumpToSentence(currentSentenceIndex);
+    }
+
+    // Single Loop Toggle
+    function toggleSingleLoop() {
+      isSingleLoop = !isSingleLoop;
+      if (isSingleLoop && isShadowing) isShadowing = false; // mutually exclusive
+      updateLoopUI();
+      updateShadowingUI();
+    }
+
+    function updateLoopUI() {
+      const btn = document.getElementById('loopModeBtn');
+      const text = document.getElementById('loopStatusText');
+      if (isSingleLoop) {
+        btn.classList.add('active');
+        text.innerText = '开';
+      } else {
+        btn.classList.remove('active');
+        text.innerText = '关';
+      }
+    }
+
+    // Shadowing Toggle
+    function toggleShadowingMode() {
+      isShadowing = !isShadowing;
+      if (isShadowing && isSingleLoop) isSingleLoop = false;
+      updateShadowingUI();
+      updateLoopUI();
+    }
+
+    function updateShadowingUI() {
+      const btn = document.getElementById('shadowingModeBtn');
+      const text = document.getElementById('shadowingStatusText');
+      if (isShadowing) {
+        btn.classList.add('active');
+        text.innerText = '开';
+      } else {
+        btn.classList.remove('active');
+        text.innerText = '关';
+        clearShadowingState();
+      }
+    }
+
+    // Blind Mode
+    function toggleBlindMode() {
+      isBlindMode = !isBlindMode;
+      document.body.classList.toggle('blind-mode', isBlindMode);
+      const btn = document.getElementById('blindModeBtn');
+      const text = document.getElementById('blindStatusText');
+      if (isBlindMode) {
+        btn.classList.add('active');
+        text.innerText = '开 (悬停看词)';
+      } else {
+        btn.classList.remove('active');
+        text.innerText = '关';
+      }
+    }
+
+    // Chinese Translation Toggle
+    function toggleChinese() {
+      isHideZh = !isHideZh;
+      document.body.classList.toggle('hide-zh', isHideZh);
+      const btn = document.getElementById('toggleZhBtn');
+      if (isHideZh) {
+        btn.innerText = '仅纯英文';
+        btn.classList.add('active');
+      } else {
+        btn.innerText = '文/A 中英对照';
+        btn.classList.remove('active');
+      }
+    }
+
+    // Speed Control
+    function setSpeed(rate) {
+      currentPlaybackRate = rate;
+      if (player && isPlayerReady) {
+        player.setPlaybackRate(rate);
+      }
+      document.querySelectorAll('.speed-chip').forEach(chip => {
+        if (parseFloat(chip.innerText) === rate) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+    }
+
+    // Bookmarks Management
+    function toggleBookmark(sentIdx, btn) {
+      const vid = videos[currentVideoIndex];
+      const s = vid.sentences[sentIdx];
+      const existingIdx = bookmarks.findIndex(b => b.vidId === vid.id && b.sentId === s.id);
+
+      if (existingIdx !== -1) {
+        bookmarks.splice(existingIdx, 1);
+        btn.classList.remove('bookmarked');
+        btn.innerText = '☆';
+      } else {
+        bookmarks.push({
+          vidId: vid.id,
+          vidTitle: vid.title,
+          sentId: s.id,
+          start: s.start,
+          end: s.end,
+          en: s.en,
+          zh: s.zh,
+          keyPhrase: s.keyPhrase || '',
+          oralTip: s.oralTip || ''
+        });
+        btn.classList.add('bookmarked');
+        btn.innerText = '★';
+      }
+      saveBookmarks();
+    }
+
+    function openBookmarkModal() {
+      const container = document.getElementById('bookmarkListContainer');
+      container.innerHTML = '';
+
+      if (bookmarks.length === 0) {
+        container.innerHTML = '<div class="bookmark-empty">你的金句本还是空的。<br>精听时点击句子右上角的 ☆ 即可收藏高频表达！</div>';
+      } else {
+        bookmarks.forEach((b, idx) => {
+          const item = document.createElement('div');
+          item.className = 'bookmark-item';
+          item.innerHTML = `
+            <div style="font-size:11px; color:var(--text-dim); margin-bottom:4px; display:flex; justify-content:space-between;">
+              <span>${b.vidTitle}</span>
+              <button style="border:none; background:none; cursor:pointer; color:#ef4444; font-size:12px;" onclick="removeBookmarkByIndex(${idx})">移除</button>
+            </div>
+            <div style="font-weight:700; color:var(--text-main); font-size:14px; margin-bottom:2px;">${b.en}</div>
+            <div style="font-size:13px; color:var(--text-muted);">${b.zh || ''}</div>
+            ${b.keyPhrase ? `<div style="font-size:11px; color:#b45309; margin-top:4px;">💡 ${b.keyPhrase}</div>` : ''}
+          `;
+          container.appendChild(item);
+        });
+      }
+
+      document.getElementById('bookmarkModal').classList.add('show');
+    }
+
+    function closeBookmarkModal() {
+      document.getElementById('bookmarkModal').classList.remove('show');
+    }
+
+    function removeBookmarkByIndex(idx) {
+      bookmarks.splice(idx, 1);
+      saveBookmarks();
+      openBookmarkModal(); // re-render
+      renderSentences(); // refresh stars in list
+    }
+
+    function clearAllBookmarks() {
+      if (confirm('确定要清空收藏夹吗？')) {
+        bookmarks = [];
+        saveBookmarks();
+        openBookmarkModal();
+        renderSentences();
+      }
+    }
+
+    // Shortcuts Modal
+    function openShortcutModal() {
+      document.getElementById('shortcutModal').classList.add('show');
+    }
+
+    function closeShortcutModal() {
+      document.getElementById('shortcutModal').classList.remove('show');
+    }
+
+    // Custom Video Modal
+    function openCustomVideoModal() {
+      document.getElementById('customVideoModal').classList.add('show');
+    }
+
+    function closeCustomVideoModal() {
+      document.getElementById('customVideoModal').classList.remove('show');
+    }
+
+    function submitCustomVideo() {
+      const rawInput = document.getElementById('customYoutubeInput').value.trim();
+      const customTitle = document.getElementById('customTitleInput').value.trim() || '自定义导入视频';
+
+      if (!rawInput) {
+        alert('请输入 YouTube 链接或 Video ID');
+        return;
+      }
+
+      // extract youtube ID
+      let vidId = rawInput;
+      const match = rawInput.match(/(?:v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+      if (match) {
+        vidId = match[1];
+      }
+
+      const newVideo = {
+        id: `custom_${Date.now()}`,
+        title: customTitle,
+        category: '用户自定义',
+        categoryKey: 'custom',
+        level: '自定义',
+        youtubeId: vidId,
+        duration: '自适应',
+        summary: '这是你自主添加的 YouTube 视频练习片段。',
+        sentences: []
+      };
+
+      videos.push(newVideo);
+      // save to local storage
+      const existingCustom = JSON.parse(localStorage.getItem('realtalk_custom_videos') || '[]');
+      existingCustom.push(newVideo);
+      localStorage.setItem('realtalk_custom_videos', JSON.stringify(existingCustom));
+
+      closeCustomVideoModal();
+      document.getElementById('customYoutubeInput').value = '';
+      document.getElementById('customTitleInput').value = '';
+
+      renderVideoTabs();
+      switchVideo(videos.length - 1);
+    }
+
+    // Keyboard Shortcuts Listener
+    document.addEventListener('keydown', (e) => {
+      // ignore when typing in input
+      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
+      switch(e.code) {
+        case 'Space':
+          e.preventDefault();
+          togglePlayPause();
+          break;
+        case 'KeyA':
+        case 'ArrowLeft':
+          e.preventDefault();
+          prevSentence();
+          break;
+        case 'KeyD':
+        case 'ArrowRight':
+          e.preventDefault();
+          nextSentence();
+          break;
+        case 'KeyR':
+        case 'Enter':
+          e.preventDefault();
+          replayCurrentSentence();
+          break;
+        case 'KeyL':
+          e.preventDefault();
+          toggleSingleLoop();
+          break;
+        case 'KeyS':
+          e.preventDefault();
+          toggleShadowingMode();
+          break;
+        case 'KeyB':
+          e.preventDefault();
+          toggleBlindMode();
+          break;
+        case 'Digit1':
+          setSpeed(0.75);
+          break;
+        case 'Digit2':
+          setSpeed(1.0);
+          break;
+        case 'Digit3':
+          setSpeed(1.25);
+          break;
+      }
+    });
+
+    // Auto-scroll toggle checkbox
+    document.getElementById('autoScrollToggle').addEventListener('change', (e) => {
+      autoScroll = e.target.checked;
+    });
+
+    // Load YouTube API script
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Initial Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedState();
+
+      if (window.location.protocol === 'file:') {
+        const b = document.getElementById('fileProtocolBanner');
+        if (b) b.style.display = 'block';
+      }
+
+      renderVideoTabs();
+      updateVideoDetails();
+      renderSentences();
+    });
+  </script>
+
+</body>
+</html>
