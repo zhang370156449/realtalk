@@ -29,7 +29,13 @@
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
-      --radius-xl: 20px;
+            --radius-xl: 20px;
+      /* 大字报排版变量 */
+      --en-active-size: 30px;
+      --en-normal-size: 23px;
+      --zh-active-size: 20px;
+      --zh-normal-size: 16px;
+      --tip-size: 14px;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
       --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.12);
@@ -64,9 +70,9 @@
     }
 
     .header-inner {
-      max-width: 1540px;
+      max-width: 100%;
       margin: 0 auto;
-      padding: 12px 24px;
+      padding: 12px 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -164,11 +170,11 @@
     .video-selector-bar {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 12px 24px;
+      padding: 12px 36px;
     }
 
     .selector-container {
-      max-width: 1540px;
+      max-width: 100%;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -253,12 +259,12 @@
 
     /* Main Grid Layout */
     .app-main {
-      max-width: 1540px;
+      max-width: 100%;
       width: 100%;
       margin: 18px auto;
-      padding: 0 24px;
+      padding: 0 36px;
       display: grid;
-      grid-template-columns: 53% 47%;
+      grid-template-columns: 45% 55%; gap: 32px;
       gap: 24px;
       flex: 1;
       align-items: start;
@@ -457,7 +463,7 @@
 
     .ctrl-btn.primary-play {
       height: 48px;
-      padding: 0 24px;
+      padding: 0 36px;
       background: var(--primary);
       color: #fff;
       border-color: var(--primary-light);
@@ -681,6 +687,34 @@
       accent-color: var(--primary);
     }
 
+    
+    /* 超大字报模式 */
+    body.giant-billboard-mode {
+      --en-active-size: 38px;
+      --en-normal-size: 28px;
+      --zh-active-size: 24px;
+      --zh-normal-size: 19px;
+      --tip-size: 16px;
+    }
+
+    .size-btn {
+      border: none;
+      background: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s ease;
+    }
+
+    .size-btn.active {
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
     /* Sentence List */
     .sentences-scroll-area {
       flex: 1;
@@ -696,9 +730,9 @@
     .sentence-card {
       background: var(--surface);
       border: 1.5px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
-      transition: all 0.2s ease;
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       position: relative;
     }
@@ -706,25 +740,27 @@
     .sentence-card:hover {
       border-color: #cbd5e1;
       background: #fafcff;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .sentence-card.active {
-      background: #f8faff;
-      border-color: var(--primary);
-      box-shadow: var(--shadow-glow);
+      background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+      border: 2.5px solid #6366f1;
+      box-shadow: 0 12px 32px -4px rgba(99, 102, 241, 0.25), 0 0 0 1px rgba(99, 102, 241, 0.15);
+      transform: scale(1.015);
+      z-index: 2;
     }
 
     .sentence-card.active::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 12px;
-      bottom: 12px;
-      width: 4px;
-      background: var(--primary);
-      border-radius: 0 4px 4px 0;
+      top: 14px;
+      bottom: 14px;
+      width: 6px;
+      background: linear-gradient(180deg, #6366f1, #a855f7);
+      border-radius: 0 6px 6px 0;
     }
 
     .card-top-row {
@@ -788,18 +824,26 @@
     }
 
     .sentence-en {
-      font-size: 16px;
+      font-size: var(--en-normal-size);
       font-weight: 600;
       color: var(--text-main);
       line-height: 1.5;
-      margin-bottom: 6px;
-      letter-spacing: -0.2px;
-      transition: filter 0.2s ease;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+      transition: all 0.2s ease;
+    }
+
+    .sentence-card.active .sentence-en {
+      font-size: var(--en-active-size);
+      font-weight: 800;
+      color: #1e1b4b;
+      line-height: 1.38;
+      letter-spacing: -0.5px;
     }
 
     /* Blind mode blur */
     body.blind-mode .sentence-en {
-      filter: blur(7px);
+      filter: blur(9px);
       user-select: none;
     }
 
@@ -810,10 +854,18 @@
     }
 
     .sentence-zh {
-      font-size: 14px;
+      font-size: var(--zh-normal-size);
       color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 8px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .sentence-card.active .sentence-zh {
+      font-size: var(--zh-active-size);
+      color: #3730a3;
+      font-weight: 600;
+      line-height: 1.55;
     }
 
     body.hide-zh .sentence-zh {
@@ -830,29 +882,42 @@
       border-top: 1px dashed var(--border);
     }
 
+    .card-tags-area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .sentence-card.active .card-tags-area {
+      border-top-color: #c7d2fe;
+    }
+
     .oral-tip-badge {
-      font-size: 12px;
+      font-size: var(--tip-size);
       background: var(--primary-bg);
       color: #3730a3;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: flex-start;
-      gap: 6px;
-      line-height: 1.4;
-      font-weight: 500;
+      gap: 8px;
+      line-height: 1.5;
+      font-weight: 600;
     }
 
     .key-phrase-badge {
-      font-size: 12px;
+      font-size: var(--tip-size);
       background: var(--accent-warm-bg);
       color: #92400e;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-weight: 600;
+      gap: 8px;
+      font-weight: 700;
     }
 
     /* Modals & Drawers */
@@ -967,7 +1032,7 @@
 </head>
 <body>
   <!-- Local file warning banner -->
-  <div id="fileProtocolBanner" style="display:none; background: #fff1f2; border-bottom: 2px solid #f43f5e; color: #9f1239; padding: 12px 24px; font-size: 14px; line-height: 1.6; text-align: center; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15); z-index: 999;">
+  <div id="fileProtocolBanner" style="display:none; background: #fff1f2; border-bottom: 2px solid #f43f5e; color: #9f1239; padding: 12px 36px; font-size: 14px; line-height: 1.6; text-align: center; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15); z-index: 999;">
     <strong>⚠️ 为什么会显示“错误 153 视频播放器配置错误”？</strong><br>
     这是因为 YouTube 官方安全策略<strong>严禁在本地（file:// 协议）直接双击打开</strong>调用播放器。<br>
     👉 <strong>极简解决方法：</strong> 请在当前文件夹中双击运行【<strong style="color:#e11d48; text-decoration:underline;">启动RealTalk.bat</strong>】即可一键解除限制并正常播放！
@@ -1115,6 +1180,10 @@
           <span class="count-badge" id="sentenceCountBadge">0 句</span>
         </div>
         <div class="transcript-options">
+          <div style="display:flex; align-items:center; gap:4px; margin-right:12px; background:var(--surface-subtle); padding:2px 4px; border-radius:8px; border:1px solid var(--border);">
+            <button id="btnFontNormal" class="size-btn active" onclick="setFontScale('normal')" title="标准大字">大字 24px</button>
+            <button id="btnFontGiant" class="size-btn" onclick="setFontScale('giant')" title="超大字报 滚动跟读更轻松">超大字报 38px 📢</button>
+          </div>
           <label class="toggle-label" title="播放时自动将当前句滚到视野中央">
             <input type="checkbox" id="autoScrollToggle" checked> 自动跟随
           </label>
@@ -1227,6 +1296,22 @@
     let bookmarks = [];
 
     // Load Local Storage
+    
+    // Font scale management
+    function setFontScale(scale) {
+      const isGiant = scale === 'giant';
+      document.body.classList.toggle('giant-billboard-mode', isGiant);
+      document.getElementById('btnFontNormal').classList.toggle('active', !isGiant);
+      document.getElementById('btnFontGiant').classList.toggle('active', isGiant);
+      localStorage.setItem('realtalk_font_scale', scale);
+      
+      // ensure active sentence stays centered after resize
+      const activeCard = document.querySelector('.sentence-card.active');
+      if (activeCard && autoScroll) {
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
     function loadSavedState() {
       const savedCustom = localStorage.getItem('realtalk_custom_videos');
       if (savedCustom) {
@@ -1851,6 +1936,8 @@
     // Initial Startup
     window.addEventListener('DOMContentLoaded', () => {
       loadSavedState();
+      const savedScale = localStorage.getItem('realtalk_font_scale');
+      if (savedScale) setFontScale(savedScale);
 
       if (window.location.protocol === 'file:') {
         const b = document.getElementById('fileProtocolBanner');
